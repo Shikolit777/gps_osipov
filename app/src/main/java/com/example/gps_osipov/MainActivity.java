@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         result = findViewById(R.id.result);
         _LocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
     }
 
     LocationListener _LocationListener = new LocationListener()
@@ -52,5 +51,19 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public Boolean GetPermissionGPS()
+    {
+        ACCESS_FINE_LOCATION = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        ACCESS_COARSE_LOCATION = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        return ACCESS_FINE_LOCATION == PackageManager.PERMISSION_GRANTED || ACCESS_COARSE_LOCATION == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public void OnGetGPS(View view)
+    {
+        if (GetPermissionGPS() == false)
+        {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+    }
 
 }
