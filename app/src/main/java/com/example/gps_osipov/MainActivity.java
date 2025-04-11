@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         result = findViewById(R.id.result);
         _LocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
     }
 
     LocationListener _LocationListener = new LocationListener()
